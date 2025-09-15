@@ -52,5 +52,5 @@ const colleagueHistory: ColleagueHistory = {
 
 export const friends = [friend1, friend2];
 
-export const colleagues = {colleagueHistory};
+export const colleagues = colleagueHistory;
 
