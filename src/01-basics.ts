@@ -46,8 +46,18 @@ const colleague3: Colleague = {
     extension: 125,
   },
 };
+
+const colleague4: Colleague = {
+  name: "Paul Fleming",
+  department: "HR",
+  contact: {
+    email: "pfleming@company.com",
+    extension: 156,
+  },
+};
+
 const colleagueHistory: ColleagueHistory = {
-  current: [colleague1, colleague2, colleague3],
+  current: [colleague1, colleague2, colleague3, colleague4],
   former: [],
 };
 
