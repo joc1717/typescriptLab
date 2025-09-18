@@ -46,15 +46,20 @@ addColleague(colleagues.current, "Sheild O Connell", "HR", "soc@here.com");
 
 function sortColleagues(
   colleagues: Colleague[],
-  sorter: (c1: Colleague, c2: Colleague) => number
+  sorter: (c1: Colleague, c2: Colleague) => number,
+  max? : number
 ): EmailContact[] {
+  let end = colleagues.length;
+  if (max !== undefined) {
+     end = max < 2 ? 1 : max
+  }
   const sorted = colleagues.sort(sorter); // Colleague[] inferred
   const result: EmailContact[] = sorted.map((ce) => ({ name: ce.name, email: ce.contact.email }));
-  return result 
+  return result.slice(0, end) 
 }
 
-//console.log(sortColleagues(colleagues.current, (a, b) => a.contact.extension - b.contact.extension));
-//console.log(sortColleagues(colleagues.current, (a, b) => a.name.length - b.name.length));
+console.log(sortColleagues(colleagues.current, (a, b) => a.contact.extension - b.contact.extension, 2));
+console.log(sortColleagues(colleagues.current, (a, b) => a.name.length - b.name.length, 1));
 
 function findFriends(friends: Friend[], criteria: (f: Friend) => boolean) {
     const filteredFriends = friends.filter(criteria) 
@@ -64,6 +69,6 @@ function findFriends(friends: Friend[], criteria: (f: Friend) => boolean) {
     }
     return result;
 }
-console.log(friends);
-console.log(findFriends(friends, (friend) => friend.name.startsWith('Pa')));
-console.log(findFriends(friends, (friend) => friend.age < 35));
+//console.log(friends);
+//console.log(findFriends(friends, (friend) => friend.name.startsWith('Pa')));
+//console.log(findFriends(friends, (friend) => friend.age < 35));
